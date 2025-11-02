@@ -2,7 +2,7 @@
 <html lang="de">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <title>Basketball Dunk - Leon vs Lucas</title>
     <style>
         * {
@@ -15,6 +15,9 @@
             overflow: hidden;
             background: black;
             font-family: 'Arial Black', sans-serif;
+            position: fixed;
+            width: 100%;
+            height: 100%;
         }
 
         /* --- Start Screen --- */
@@ -342,7 +345,6 @@
             z-index: 100;
         }
 
-        /* --- Neuer Button nach 2x Audio --- */
         #best-song-btn {
             position: absolute;
             right: 30px;
@@ -363,7 +365,6 @@
             color: white;
         }
 
-        /* --- Song Screen --- */
         #song-screen {
             position: fixed;
             top: 0;
@@ -396,27 +397,77 @@
             color: #ff69b4;
             text-shadow: 2px 2px 4px #000;
         }
+
+        /* Mobile Anpassungen */
+        @media (max-width: 768px) {
+            .court {
+                transform: scale(0.65);
+                transform-origin: center center;
+            }
+            
+            #start-button {
+                font-size: 20px;
+                padding: 15px 30px;
+            }
+            
+            .title {
+                font-size: 24px;
+                top: 20px;
+            }
+            
+            #best-song-btn {
+                font-size: 14px;
+                padding: 10px 20px;
+                right: 20px;
+                bottom: 20px;
+            }
+            
+            #play-btn {
+                font-size: 28px;
+                padding: 20px 40px;
+            }
+            
+            #fallerbros-text {
+                font-size: 20px;
+                padding: 0 20px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .court {
+                transform: scale(0.5);
+            }
+            
+            #start-button {
+                font-size: 16px;
+                padding: 12px 25px;
+            }
+            
+            .title {
+                font-size: 20px;
+            }
+        }
     </style>
 </head>
 <body>
-
     <div id="start-screen">
         <button id="start-button">Click here for a reality check</button>
     </div>
 
     <div class="court" id="court">
         <h1 class="title">🏀 Get Shit On! 🏀</h1>
+        
         <div class="court-floor">
             <div class="center-line"></div>
             <div class="three-point-line"></div>
         </div>
+
         <div class="hoop">
             <div class="backboard"></div>
             <div class="rim"></div>
             <div class="net"></div>
         </div>
 
-        <!-- Lucas -->
         <div class="player lucas">
             <div class="player-name lucas-name">LUCAS</div>
             <div class="body">
@@ -430,7 +481,6 @@
             </div>
         </div>
 
-        <!-- Leon -->
         <div class="player leon">
             <div class="player-name leon-name">LEON</div>
             <div class="body">
@@ -454,7 +504,6 @@
         <button id="best-song-btn">Click here for the best song ever</button>
     </div>
 
-    <!-- Song Screen -->
     <div id="song-screen">
         <button id="play-btn">▶ Play</button>
         <div id="fallerbros-text">Fallerbros 4 life &lt;3</div>
@@ -497,6 +546,7 @@
                 dunkSound.currentTime = 0;
                 dunkSound.play();
                 playCount++;
+
                 if (playCount === 2) {
                     bestSongBtn.style.display = 'block';
                 }
