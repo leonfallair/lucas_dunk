@@ -20,13 +20,18 @@
             height: 100%;
         }
 
+        body, .court {
+            outline: 2px solid limegreen;
+        }
+
+
         /* --- Start Screen --- */
         #start-screen {
             position: fixed;
             top: 0;
             left: 0;
             width: 100vw;
-            height: 100vh;
+            height: calc(var(--vh, 1vh) *100);
             background: black;
             display: flex;
             justify-content: center;
@@ -63,7 +68,7 @@
         .court {
             position: relative;
             width: 100vw;
-            height: 100vh;
+            height: calc(var(--vh, 1vh) *100);
             overflow: hidden;
             background: linear-gradient(to bottom, #87CEEB 0%, #87CEEB 60%, #8B4513 60%, #8B4513 100%);
             display: none;
@@ -347,7 +352,7 @@
         }
 
         #best-song-btn {
-            position: absolute;
+            position: fixed;
             right: clamp(15px, 3vw, 30px);
             bottom: clamp(15px, 3vh, 30px);
             display: none;
@@ -371,7 +376,7 @@
             top: 0;
             left: 0;
             width: 100vw;
-            height: 100vh;
+            height: calc(var(--vh, 1vh) *100);
             background: black;
             color: white;
             display: none;
@@ -466,6 +471,16 @@
     <audio id="best-song" src="audio/best_song.mp3" loop></audio>
 
     <script>
+
+    
+        // Korrigiert die calc(var(--vh, 1vh) *100)-Darstellung auf Mobilgeräten
+        function setRealVH() {
+            document.documentElement.style.setProperty('--vh', `${window.innerHeight * 0.01}px`);
+        }
+        setRealVH();
+        window.addEventListener('resize', setRealVH);
+
+
         const startScreen = document.getElementById('start-screen');
         const startButton = document.getElementById('start-button');
         const court = document.getElementById('court');
