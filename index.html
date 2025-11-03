@@ -322,12 +322,29 @@
             40%, 60% { transform: translateY(calc(-15vh)); }
         }
 
+        @media (max-width: 768px) {
+            @keyframes lucas-watch {
+                0%, 100% { transform: translateY(0); }
+                40%, 60% { transform: translateY(calc(-10vh)); }
+            }
+        }
+
         @keyframes leon-dunk {
             0% { transform: translateX(0) translateY(0); }
             40% { transform: translateX(calc(-15vw)) translateY(calc(-15vh)); }
             50% { transform: translateX(calc(-21vw)) translateY(calc(-22vh)); }
             80% { transform: translateX(calc(-24vw)) translateY(0); }
             100% { transform: translateX(0) translateY(0); }
+        }
+
+        @media (max-width: 768px) {
+            @keyframes leon-dunk {
+                0% { transform: translateX(0) translateY(0); }
+                40% { transform: translateX(calc(-5vw)) translateY(calc(-10vh)); }
+                50% { transform: translateX(calc(-7vw)) translateY(calc(-14vh)); }
+                80% { transform: translateX(calc(-10vw)) translateY(0); }
+                100% { transform: translateX(0) translateY(0); }
+            }
         }
 
         @keyframes leon-arms-up {
